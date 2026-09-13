@@ -6,7 +6,13 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {% for noodle in noodles %}
         <div class="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition duration-200">
-            <img src="{{ noodle.image.url }}" alt="{{ noodle.name }}" class="w-full h-40 object-cover rounded-lg mb-4">
+            {% if noodle.image %}
+                <img src="{{ noodle.image.url }}" alt="{{ noodle.name }}" class="w-full h-40 object-cover rounded-lg mb-4">
+            {% else %}
+                <div class="w-full h-40 bg-gray-200 flex items-center justify-center rounded-lg mb-4 text-gray-500">
+                    No Image
+                </div>
+            {% endif %}
             <h3 class="text-lg font-semibold text-gray-800">{{ noodle.name }}</h3>
             <p class="text-sm text-gray-500">{{ noodle.description }}</p>
             <p class="text-red-700 font-bold mt-2">Rs. {{ noodle.price }}</p>
